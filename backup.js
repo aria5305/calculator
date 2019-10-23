@@ -81,11 +81,10 @@ allKeys.forEach(key =>{
         
         //Number keys
         if(!action){
-            if(displayNum.textContent === "0" || previousKey === "operator" ){
+            if(displayNum.textContent === "0" || previousKey === "operator"||previousKey ==="equals"){
                     displayNum.textContent = e.target.textContent;
                     previousKey = 'number'; 
-            
-    
+
             }else{
                 displayNum.textContent += e.target.textContent;
                 previousKey = 'number'; 
@@ -102,6 +101,7 @@ allKeys.forEach(key =>{
             calculate.operatorSymbol = null;
             previousNumber.textContent = ""; 
             displayNum.textContent = ""; 
+            previousKey = "";
           
         }
         
@@ -128,6 +128,7 @@ allKeys.forEach(key =>{
             ||action==="multiply"|| action ==="divide"||
             action ==="divisible"){
 
+               
              //retriving first number 
             //pressed the operator key for the first time
              if(displayNum.textContent != "" && calculate.total ===null) {
@@ -145,21 +146,18 @@ allKeys.forEach(key =>{
             if(calculate.total != null && calculate.operator != null && previousKey!= "operator" && calculate.num2 === null ) {
                 calculate.num2 = Number(displayNum.textContent);
                 calculate.operatorSymbol =  e.target.textContent;
-                previousNumber.textContent = calculate.total + calculate.operatorSymbol + calculate.num2;
+                previousNumber.textContent = calculate.total + calculate.operatorSymbol;
                
             }
 
             //this bit allows user to do calculations using the operators instead of the equals
            if(calculate.num2 !==null) {
               
+    
             if(calculate.total != null && calculate.operator!= null){
                 calculate.num2 = Number(displayNum.textContent);
-               
-              
-               
                 calculate.total = operate(calculate.total,calculate.operator,calculate.num2);
                 displayNum.textContent = "";
-                previousNumber.textContent = calculate.total + calculate.operatorSymbol, calculate.num2;
                 calculate.operatorSymbol =  e.target.textContent;
 
                 calculate.num2 = null;
@@ -178,6 +176,8 @@ allKeys.forEach(key =>{
             
             else{
                 calculate.operator = e.target.dataset.action;
+                calculate.operatorSymbol = e.target.textContent;
+                previousNumber.textContent =  calculate.total + calculate.operatorSymbol;
                 previousKey = "operator";
             }
 
@@ -198,7 +198,7 @@ allKeys.forEach(key =>{
             calculate.num2 = null;
             calculate.operator = null;
             calculate.operatorSymbol = null;
-            
+            calculate.total = null;
 
             }
   
