@@ -1,0 +1,117 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
+
+*,
+*::before,
+*::after{
+  margin:0;
+  padding:0;
+  box-sizing: border-box;
+}
+
+html{
+  font-size:62.5%;
+  box-sizing:inherit;
+}
+
+body{
+  font-size:2rem;
+  font-family: 'Roboto', sans-serif;
+}
+
+button{
+  border:none;
+  font-size: 1.5rem;;
+  background:none;
+}
+
+.container{
+    margin:5% auto;
+    background-color:#ccc;
+    height:530px;
+    width:300px;
+}
+
+.display{
+  text-align:right;
+}
+
+.int{
+  font-size:3em;
+  color:white;
+
+  padding-right:5px;
+}
+.previous{
+  padding-top:5rem;
+  color:#ccc;;
+  padding-right:5px;
+}
+
+.display{
+    background-color:black;
+    width:100%;
+    height:30%;
+}
+
+.operations {
+    width:100%;
+    height:70%;
+    display:grid; 
+    grid-template-columns: repeat(4,1fr);
+    grid-template-rows: repeat(5,1fr);
+    grid-gap:10px;
+    text-align:center;
+    padding:.5rem;
+}
+
+.func{
+ 
+  background-color:#dedede;
+}
+
+.func--side{ 
+    grid-column-start:4;
+    border:1px solid orange;
+    background-color:orange;
+    color:white;
+   
+  &--add{
+    grid-row:1;
+  }
+  
+  &--sub{
+    grid-row:2;
+  }
+  
+}
+
+.number{
+
+  grid-row:2/-1;
+  grid-column:1/4;
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  grid-template-rows:repeat(4,1fr);
+  grid-gap:5px;
+  
+  &--0{
+    grid-column:1/3;
+  }
+  & > * {
+    color:white;
+   
+    background-color:#777;
+    
+  }
+}
+
+.func,.numbers{
+  border-radius:50%;
+  cursor:pointer;
+}
+
+.number--0{
+  border-radius:20px;
+  text-align:left;
+  padding-left:2.5rem;
+}
